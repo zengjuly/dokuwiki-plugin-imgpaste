@@ -190,14 +190,15 @@
      * @param {string} id The newly uploaded file ID
      */
     function insertSyntax(id) {
-        id = getRelativeID(id);
+        //id = getRelativeID(id);
 
         if (typeof window.proseMirrorIsActive !== 'undefined' && window.proseMirrorIsActive === true) {
             const pm = window.Prosemirror.view;
             const imageNode = pm.state.schema.nodes.image.create({id: id});
             pm.dispatch(pm.state.tr.replaceSelectionWith(imageNode));
         } else {
-            insertAtCarret('wiki__text', '{{' + id + '}}');
+            insertAtCarret('wiki__text', '{{:' + id + '}}');
+            //insertAtCarret('wiki__text', '{{:' + id + '}}');
         }
     }
 
